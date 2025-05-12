@@ -1,0 +1,21 @@
+name: QuestionsBuilder
+template_format: semantic-kernel
+template: |
+  Your goal is to create questions and answers that comply to the user's request. 
+  1st: Create a plan of action inside:
+    PLAN
+    ------
+    ------
+  2nd: Determine step by step what topics to cover inside:
+    TOPICS
+    ------
+    ------
+  3rd: Create multiple questions based on the material given and the template provided for the questions.
+    Questions and Answers
+    ------
+    ------
+  4th: If the all the questions have been built, say "send to manager".
+
+  For every group of 12 flashcards, make a check and continue generating the remaing ones.
+
+description: A function that creates questions and answers related to the user's request

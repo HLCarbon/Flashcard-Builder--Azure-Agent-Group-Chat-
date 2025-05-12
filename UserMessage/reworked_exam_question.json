@@ -1,0 +1,47 @@
+[
+  {
+    "question": "You are building an app that will analyze resumes and remove names and addresses. You need to configure the Azure AI Language Personally Identifiable Information (PII) detection feature for the app. Which categories should you specify in the request?",
+    "correct_answer": "Person and Address only"
+  },
+  {
+    "question": "You have an app that sends audio recordings from a call center to the speech-to-text feature of Azure AI Services. During testing, you notice that the Word Error Rate (WER) is high and there are a lot of substitution errors. You need to improve the model and reduce the WER. What should you add to the training data?",
+    "correct_answer": "custom product and people names"
+  },
+  {
+    "question": "You plan to build an app that will transcribe large quantities of audio files by using the Azure AI Speech service batch transcription feature. You need to recommend a storage solution for the audio files. The solution must minimize development effort. What should you recommend?",
+    "correct_answer": "Azure Storage"
+  },
+  {
+    "question": "You are building an app that will recognize the intent and entities of user utterances in real-time. You need to implement the pattern matching intent recognition mechanism. The solution must only detect entities that you define in a catalog of phrases. Which entity type should you use?",
+    "correct_answer": "the List entity using Strict mode"
+  },
+  {
+    "question": "You are building an app that will recognize the intent and entities of user utterances in real-time. You are evaluating the use of intent recognition with the Azure AI Speech and Azure AI Language services or simple pattern matching. When should you use pattern matching?",
+    "correct_answer": "You are only interested in matching strictly what the user said."
+  },
+  {
+    "question": "You are building a custom translation model. You need to use bilingual training documents to teach the model your terminology and style. Which rule should you follow?",
+        "correct_answer": "Be liberal"
+  },
+  {
+    "question": "You are building a custom translation model. You need to evaluate the precision of the text that you translated by using a Bilingual Evaluation Understudy (BLEU) score. Which scale is used for the score?",
+        "correct_answer": "between 0 and 1100"
+  },
+  {
+    "question": "You are using Azure AI Translator to translate documents from one language to another. You need to extend the capabilities of an application by using the Azure AI Translator service. Which three features are available in the Translator service?",
+    
+    "correct_answer": [
+      "Detect language",
+      "Dictionary lookup",
+      "Transliterate"
+    ]
+  },
+  {
+    "question": "You are building an Azure AI Translator custom model. You need to ensure that the translation accuracy for the model has a Bilingual Evaluation Understudy (BLEU) score that indicates high quality. What is the minimum score range required?",
+    "correct_answer": "40 to 59"
+  },
+  {
+    "question": "You are building a model that uses Conversational Language Understanding (CLU). You need to train the model. Which training methods can you use?",
+    "correct_answer": "standard and advanced only"
+  }
+]

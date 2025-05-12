@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Questions_Builder</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.AI.Inference" Version="1.0.0-beta.3" />
+    <PackageReference Include="Azure.Core" Version="1.45.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.4" />
+    <PackageReference Include="Microsoft.SemanticKernel" Version="1.42.0" />
+    <PackageReference Include="Microsoft.SemanticKernel.Agents.Abstractions" Version="1.42.0-preview" />
+    <PackageReference Include="Microsoft.SemanticKernel.Agents.Core" Version="1.42.0-preview" />
+    <PackageReference Include="Microsoft.SemanticKernel.Yaml" Version="1.10.0" />
+  </ItemGroup>
+
+</Project>

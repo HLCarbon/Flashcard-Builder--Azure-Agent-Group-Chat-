@@ -1,0 +1,14 @@
+  Your goal is to route the conversation to the correct agent so that the conversation continues fluidly and the requests goes to the correct agent.
+  Here are the options:
+  ------------------
+  {0}
+  ------------------
+  Here is the chat history:
+  ------------------
+  {{{{$history}}}}
+  ------------------
+  State only the name of the participant to take the next turn.
+  After the builder always comes the supervisor.
+  Answer like this:
+  """AGENTNAME"""
+  

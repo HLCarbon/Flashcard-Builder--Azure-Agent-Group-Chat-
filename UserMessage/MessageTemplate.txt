@@ -1,0 +1,18 @@
+I'm studying for Azure AI-102. I need to create new questions for me to study. The goal is to create flashcards that contain the study material.
+        Build as many questions as possible, even slightly different ones from each other, but make sure that it covers all the material.
+        
+        As such, I need you to create questions based on the material that I will give you. 
+        Here is the study material:
+        ----------------------------------
+        {0}
+        ----------------------------------
+        Here are some questions in the AI-102 exam that are not related with the study material. This is to guide you on how you should build your questions and answers:
+        ----------------------------------
+        {1}
+        ----------------------------------
+        Create questions only based on the study material that I gave you and related information that you have knowledge of. Create only questions and answers, not multiple choice.
+        Do not go outside the topics of the provided material. Do not make questions that are broad about azure. Make questions specific to the services and not general questions. If the topic is about language, don't create questions about vision or key management.
+        Create as many questions as possible. For each topic that you identify, create questions for each. A minimum of 100 questions must be generated
+        Make medium and hard questions only. Do not make questions based on any exercise, but based on the tools used.
+        I'm going to use the .NET SDK, so do not generate questions about the SDK in other languages nor questions about the REST API.
+        Create small questions for flashcards

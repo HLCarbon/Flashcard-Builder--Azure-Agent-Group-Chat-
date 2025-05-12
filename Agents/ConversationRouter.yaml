@@ -1,0 +1,12 @@
+name: ConversationRouter
+template: |
+  Your goal is to route the conversation to the correct agent so that the conversation continues fluidly and the requests goes to the correct agent.
+  Here are the options:
+  ------------------
+  {{$agents}}
+  ------------------
+description: A function that routes the conversation to the correct agent.
+input_variables:
+  - name: agents
+    description: A list of agents and their functions.
+    is_required: true
