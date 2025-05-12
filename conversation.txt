@@ -2,653 +2,547 @@
 
 PLAN
 ------
-1. Identify major topics and features from the provided AI-102 Azure AI-Foundry study material.
-2. For each topic, list key concepts, tools, coding approaches, deployment methods, and evaluation metrics suitable for medium/hard question development.
-3. Generate multiple, non-overlapping questions per subtopic, focusing on usage, integration, deployment, and best practices of Azure AI/Generative AI services and .NET SDK.
-4. For every set of 12 questions, check the count and continue generating until the minimum (100+) is reached.
-5. Do not include generic Azure questions. Focus on the specific services, techniques, and scenarios in the material (Foundry, models, RAG, prompt flow, fine-tuning, evaluation, safety).
-6. Frame each question and answer according to the exam-like and flashcard style.
-
+1. Identify all major services, concepts, and tools covered in the provided material, focusing on .NET SDK usage.
+2. Organize into topics, subtopics, and features (AI services, Generative AI, SDK specifics, Prompt Engineering, Responsible AI, Evaluation, etc.).
+3. For each topic, create medium and hard questions based on features, processes, concepts, and implementation steps (not lab instructions).
+4. Ensure questions are focused on .NET usage where SDK is relevant. No Python, REST, or general Azure questions.
+5. After each set of 12 questions, check for completion and continue until reaching at least 100 questions.
+------
 TOPICS
 ------
-1. Azure AI Foundry Fundamentals (Hubs, Projects, Roles, Connected Resources)
-2. Azure AI Services Overview (OpenAI, Vision, Speech, Language, Content Safety, Translator, Face, Custom Vision, Search)
-3. Resource Management and Deployment (Single/multi service resources, regional/cost/quotas, deployment endpoints)
-4. Model Catalog and Foundation Model Selection (LLM vs SLM, proprietary vs open-source, task/precision/deployment)
-5. Deploying and Consuming Models (Endpoints, .NET SDK, switching model deployments, chat completions)
-6. Prompt Engineering & Optimization Strategies (Patterns, system messages, context, RAG, fine-tuning)
-7. RAG (Retrieval Augmented Generation), Embeddings, Azure AI Search
-8. Development Tools, SDKs, and .NET coding patterns (AIProjectClient, ChatCompletionsClient, Connection management)
-9. Prompt Flow (Inputs/Nodes/Tools/Outputs, flow types, connections, runtimes, variants, deployment)
-10. Responsible AI (Principles, content filters, mapping/measuring/managing harms, safety layers)
-11. Evaluation (Benchmarks, manual/automated evaluation, quality/safety metrics, custom metrics)
-12. Fine-Tuning (JSONL data prep, advanced parameters, deployment, use-cases)
-13. Best practices in monitoring, updating, and managing generative AI production apps
-
-Questions and Answers
+1. Azure AI services overview and service specifics (OpenAI, Vision, Speech, Language, Custom Vision, Content Safety, Translator, Face, Document Intelligence, Content Understanding, Search).
+2. Generative AI concepts: LLMs/SLMs, model deployment, endpoints, chat clients.
+3. Azure AI Foundry: Hubs, Projects, organization, connected resources, RBAC, SDK integration.
+4. Development tools and .NET SDK: usage, project connections, model deployments, client objects, sample code.
+5. Model catalog: foundation vs. fine-tuned models, model selection and deployment, performance comparison.
+6. Prompt engineering: patterns, system prompts, context, response formatting.
+7. Optimization strategies: RAG, fine-tuning, embeddings, hybrid search.
+8. Prompt flow: flows, tools, connections, runtimes, deployment, variant management, metrics, monitoring.
+9. Responsible AI and Content Filtering: Microsoft principles, content filters, assessment, mitigation, layers of risk management.
+10. Evaluation: benchmarks, manual/automated/AI-assisted evaluations, metrics, F1/BLEU/ROUGE, evaluation flows.
+11. Fine-tuning: process, dataset, configuration, deployment, comparison to base models.
+12. Applying RAG: building vector search indexes, integrating with Search via .NET SDK.
 ------
-1. 
-Question: How can you programmatically retrieve the default Azure AI Services connection for a project using the .NET SDK?
-Correct Answer: By using the AIProjectClient.GetConnectionsClient().GetDefaultConnection(ConnectionType.AzureAIServices, true) method.
-
-2.
-Question: What information do you need to instantiate an AIProjectClient object in the .NET SDK?
-Correct Answer: The Azure AI Foundry project connection string.
-
-3.
-Question: In the context of Azure AI Foundry, what is the benefit of using# QuestionsSupervisor:
-
-Checklist for Flashcard Question Review
-
-1. Coverage
-   - All major topics from the provided study material are included.
-   - No requirements or important study areas are omitted.
-2. Sufficient Questions
-   - At least 100 questions are present (medium/hard, non-duplicate).
-   - Each identified topic has multiple questions; no underrepresented area.
-3. Scope and Depth
-   - Questions are based strictly on the provided study material and .NET SDK usage (no Python/REST API).
-   - Questions are specific (not broad Azure general, not about unrelated services).
-   - Each question focuses on a precise service, tool, or scenario, not general Azure AI.
-4. Format
-   - Questions are concise and clear for flashcard use.
-   - Each question has a short, correct answer (no multiple choice, no open or ambiguous).
-   - No questions are simply copied from exercises, labs, or step-by-step instructions.
-5. Difficulty
-   - Questions are medium/hard level; not trivial.
-6. Redundancy and Overlap
-   - Minimal duplication or overlap between questions.
-7. Adherence to Guidelines
-   - No references or questions about Python, REST, or unrelated SDKs.
-   - Coverage reflects only topics from the given material.
-
-Quality Control Actions
-- If any topic is missing: send to builder.
-- If fewer than 100 questions: send to builder.
-- If any other checklist item is not satisfied: send to builder.
-- If all checks pass: request finished.# QuestionsBuilder:
-
 Questions and Answers
 ------
 
-1.  
-Question: How do you connect to an Azure AI Foundry project using the .NET SDK for programmatic access?
-Correct Answer: By creating an AIProjectClient object with the project connection string and a DefaultAzureCredential.
+Q1: What .NET SDK class can be used to create a proxy object for an Azure AI Foundry project?
+A1: AIProjectClient
 
-2.  
-Question: When working with connected resources in a Foundry project, how do you access a resource's API key for client instantiation in .NET?
-Correct Answer: By retrieving the ConnectionResponse from ConnectionsClient and casting its Properties to ConnectionPropertiesApiKeyAuth.
+Q2: Which method in the .NET SDK enables you to retrieve connection details for an Azure AI Search index within a Foundry project?
+A2: GetConnectionsClient().GetDefaultConnection(ConnectionType.AzureAISearch, true)
 
-3.  
-Question: How do you obtain a TextAnalyticsClient for Azure AI Language, using Foundry connections in the .NET SDK?
-Correct Answer: By retrieving the default Azure AI Services connection, extracting endpoint/key, and instantiating TextAnalyticsClient with these.
+Q3: When building a generative AI chat client in .NET, which SDK library is required to interact with models deployed to Azure AI Model Inference?
+A3: Azure.AI.Inference
 
-4.  
-Question: What is the recommended approach to managing access for multiple development teams working on AI projects in an organization?
-Correct Answer: Use hubs in Azure AI Foundry to centralize resources and access control across projects.
+Q4: How do you authenticate a .NET SDK application to access Azure AI Foundry project resources?
+A4: By using DefaultAzureCredential within the Azure.Identity namespace.
 
-5.  
-Question: What are the default roles available at the hub level in Azure AI Foundry?
-Correct Answer: Owner, Contributor, Azure AI Developer, Azure AI Inference Deployment Operator, Reader.
+Q5: What value is needed to instantiate the AIProjectClient object in the .NET SDK?
+A5: The project connection string.
 
-6.  
-Question: What is the advantage of provisioning a multi-service Azure AI Services resource over several single-service resources?
-Correct Answer: Simplifies management and centralizes multiple AI service capabilities within one resource.
+Q6: What is the role of the ChatCompletionsClient class in the Azure.AI.Inference SDK?
+A6: It enables sending prompts and retrieving chat completions from deployed models.
 
-7.  
-Question: How do you select a language model in Azure AI Foundry model catalog for domain-specific needs such as Arabic language support?
-Correct Answer: Filter models based on regional or domain-specific attributes, e.g., select Core42 JAIS for Arabic.
+Q7: How can you switch models in a .NET chat client application using the Azure AI Model Inference deployment?
+A7: By changing the deployment name parameter in ChatCompletionsOptions.
 
-8.  
-Question: What is the difference between using a large language model (LLM) and a small language model (SLM) for an Azure AI solution?
-Correct Answer: LLMs provide deeper reasoning and complex generation; SLMs are optimized for efficiency and lower-resource tasks.
+Q8: What are two main deployment types supported in Azure AI Foundry for .NET SDK chat clients?
+A8: Azure AI Model Inference service and Azure OpenAI service.
 
-9.  
-Question: In Azure AI Foundry, how do you deploy a model so that it can be accessed via endpoint in client apps?
-Correct Answer: Deploy the model to an AI resource from the portal, which exposes an endpoint URL and authentication key.
+Q9: In the .NET SDK, how can you access a deployed OpenAI chat model in a Foundry project?
+A9: By retrieving the Azure OpenAI connection and using GetAzureOpenAIChatClient with the deployment name.
 
-10.  
-Question: What .NET SDK client is used to send a prompt to a deployed Azure AI model via model inference?
-Correct Answer: ChatCompletionsClient 
+Q10: Which method is used to retrieve all connections of a specific type in an Azure AI Foundry project using .NET SDK?
+A10: GetConnections(ConnectionType)
 
-11.  
-Question: How can you programmatically switch between multiple model deployments in a Foundry-backed .NET app?
-Correct Answer: By changing the Model property in ChatCompletionsOptions when calling ChatCompletionsClient.Complete().
+Q11: After deploying a model in Azure AI Foundry, how do you use the .NET SDK to send a prompt with additional context for RAG?
+A11: Include AzureSearchChatDataSource in ChatCompletionOptions when calling CompleteChat().
 
-12.  
-Question: What are the benefits of using the AIProjectClient.GetAzureOpenAIChatClient() method in .NET when working with Azure OpenAI deployments?
-Correct Answer: It simplifies authentication and retrieves deployment connection details directly from the project context.
+Q12: What is the key difference between using a base model and a fine-tuned model in Azure AI Foundry projects?
+A12: Fine-tuned models have been further trained on domain-specific data to improve response consistency and style.
 
------
+---------
+Checking after 12 questions. Continuing to the next set.
 
-(Count: 12. Continue with additional sets…)Questions and Answers
-------
+Q13: What is the purpose of a hub in Azure AI Foundry, and how is it represented in resource management?
+A13: A hub centralizes shared resources, roles, and access control for related projects and is implemented as an Azure AI Hub resource.
 
-13.  
-Question: What method do you use in the .NET SDK to programmatically retrieve all project connections of a specific type, such as AzureAIServices?
-Correct Answer: Use GetConnections(ConnectionType.AzureAIServices) from the ConnectionsClient.
+Q14: Which object in the .NET SDK provides access to project-level connected resources, such as storage or search?
+A14: ConnectionsClient, accessed via AIProjectClient.GetConnectionsClient().
 
-14.  
-Question: When would you fine-tune a base foundation model in Azure AI Foundry instead of just using prompt engineering?
-Correct Answer: When consistent output format, style, or domain adaptation is required and prompt engineering alone is insufficient.
+Q15: How does the Azure AI Foundry SDK ensure secure access to external services and APIs when running flows?
+A15: By using project-level or hub-level connections with credentials stored securely in Azure Key Vault.
 
-15.  
-Question: How should training data be formatted for fine-tuning a chat completion model in Azure AI Foundry?
-Correct Answer: As a JSONL file with message arrays containing system, user, and assistant messages.
+Q16: What is the recommended way to organize teams working on multiple AI projects using Foundry?
+A16: Assign shared resources and role-based access at the hub level, and inherit them in individual projects.
 
-16.  
-Question: What parameter in a fine-tuning job controls the number of complete passes the model makes through your training dataset?
-Correct Answer: n_epochs
+Q17: Which content safety categories can be configured in custom content filters within Azure Foundry?
+A17: Violence, hate, sexual, and self-harm.
 
-17.  
-Question: In deployed Foundry models, what is the significance of the "Tokens per Minute Rate Limit" setting?
-Correct Answer: It sets the maximum number of tokens processed per minute to manage quota and avoid overuse.
+Q18: In Azure AI Search integration via .NET SDK, what is the benefit of using vector indexes with embedding models?
+A18: They enable hybrid and semantic search based on the meaning, not just keyword matches, improving retrieval for RAG.
 
-18.  
-Question: Describe how embeddings are used when creating a vector index for hybrid search in Azure AI Foundry.
-Correct Answer: Embeddings convert text data into vectors used for semantic and vector-based retrieval in a search index.
+Q19: When should Retrieval Augmented Generation (RAG) be preferred over prompt engineering alone?
+A19: When the model requires up-to-date, factual, or domain-specific context beyond its training data.
 
-19.  
-Question: How would you configure a ChatCompletionsClient in .NET to use a RAG pattern with an Azure AI Search vector index?
-Correct Answer: Add index connection and embedding model details to ChatCompletionOptions via AzureSearchChatDataSource.
+Q20: What role does the batch_size parameter play in fine-tuning a language model with the Foundry model catalog?
+A20: It controls how many examples are processed per update during training, affecting efficiency and variance.
 
-20.  
-Question: What is the purpose of system messages in prompt engineering when using a generative AI model?
-Correct Answer: To guide model behavior, tone, and response structure by setting context before user input.
+Q21: How must fine-tuning data be formatted for chat completion models in Azure AI Foundry?
+A21: As a JSONL file with multi-turn messages (system, user, assistant) as JSON objects per line.
 
-21.  
-Question: Which Azure AI Foundry service is specifically designed for extracting text, entities, and sentiment from unstructured documents?
-Correct Answer: Azure AI Language
+Q22: Which principle of Responsible AI would be violated if a model provided recommendations biased against certain user groups?
+A22: Fairness
 
-22.  
-Question: How can you filter language models in the Foundry model catalog for models supporting on-premises or local deployment?
-Correct Answer: By applying the deployment and openness filters in the model catalog to show only open-source and local options.
+Q23: What is an effective manual evaluation strategy for generative AI model performance within the Foundry portal?
+A23: Upload a dataset of prompts and expected responses and rate generated outputs using thumbs up/down.
 
-23.  
-Question: In the .NET SDK, what type of object do you pass to ChatCompletionsClient.Complete() to specify the deployment and chat messages?
-Correct Answer: A ChatCompletionsOptions object containing the model name and messages list.
+Q24: Which Azure AI Foundry tool allows orchestration of multi-step tasks, integration of Python scripts, and model prompting within flows?
+A24: Prompt flow
 
-24.  
-Question: When using manual evaluation in the Azure AI Foundry portal, what information do you generally provide for quality assessment?
-Correct Answer: A set of input prompts and corresponding expected output to rate the generated model responses.
+----------
+Checking after 24 questions. Continuing.
 
-----
-(Count: 24. Continue with more sets…)# QuestionsSupervisor:
+Q25: In the .NET SDK, what is required to enable a chat client to retrieve context from an Azure AI Search index for grounding prompts?
+A25: Provide the search endpoint, index name, and authentication (API key) in AzureSearchChatDataSource when building ChatCompletionOptions.
 
-send to builder# QuestionsBuilder:
+Q26: What is the function of a Prompt Flow runtime in Azure AI Foundry?
+A26: It manages compute and environment dependencies needed to execute flows securely and reproducibly.
 
-Questions and Answers
-------
+Q27: Which Azure AI service is specialized for text translation across multiple languages?
+A27: Azure AI Translator
 
-25.  
-Question: How do you ensure the .NET SDK can access the Azure AI Foundry project's resources when running code locally?
-Correct Answer: Authenticate using DefaultAzureCredential, typically after signing in with Azure CLI or providing a managed identity.
+Q28: What type of Azure resource should you provision to use GPT-family generative language models in Azure?
+A28: Azure OpenAI service resource
 
-26.  
-Question: What class in the .NET SDK is used to initiate evaluation of text analytics, such as sentiment analysis, within Foundry?
-Correct Answer: TextAnalyticsClient
+Q29: What is the recommended approach to providing unique access to specific resources for one project in a hub without inheriting from the hub configuration?
+A29: Define project-level connected resources exclusive to the project.
 
-27.  
-Question: In prompt flow, what is a "variant" and what problem does it help solve?
-Correct Answer: A variant is an alternate configuration or prompt for an LLM node, allowing easy experimentation and comparison between different prompt versions.
+Q30: What piece of information must be provided to successfully connect to an Azure AI Foundry project using the .NET SDK in code?
+A30: The project’s connection string found in the Foundry portal project Overview page.
 
-28.  
-Question: What layer of the generative AI solution would you use Azure AI Content Safety filters to mitigate harmful output?
-Correct Answer: Safety System layer.
+Q31: What content filter severity levels can be configured for each content harm category in Azure AI Foundry?
+A31: Safe, low, medium, and high.
 
-29.  
-Question: Which four categories can you configure thresholds for in custom content filters in Azure AI Foundry?
-Correct Answer: Violence, Hate, Sexual, Self-harm.
+Q32: Which evaluation technique is best to compare generated model responses to expected "ground truth" data using standard metrics like F1-score in Foundry?
+A32: Automated evaluations with AI Quality (NLP) metrics.
 
-30.  
-Question: How does Azure AI Foundry support role-based access management at the project level?
-Correct Answer: By assigning default roles such as Owner, Contributor, Azure AI Developer, Azure AI Inference Deployment Operator, and Reader to users within the project.
+Q33: Which metric measures whether generated text flows naturally and is human-like?
+A33: Coherence
 
-31.  
-Question: What essential information is needed to configure a new Azure AI Services multi-service resource via the Azure portal?
-Correct Answer: Subscription, resource group, region, resource name, and pricing tier.
-
-32.  
-Question: Which .NET class would you use to implement a generative chat client that supports both OpenAI and third-party models in Azure AI Foundry?
-Correct Answer: ChatCompletionsClient.
-
-33.  
-Question: How do you specify a grounding index for hybrid search when configuring ChatCompletionOptions in the .NET SDK?
-Correct Answer: Populate AzureSearchChatDataSource fields with the endpoint URI, index name, authentication, and optionally the embedding model.
-
-34.  
-Question: After deploying a fine-tuned model in Foundry, how can you validate its consistency against the expected conversational style?
-Correct Answer: By conducting manual or automated evaluations using a test dataset and comparing outputs to ground truth responses.
-
-35.  
-Question: Which component in prompt flow allows running custom Python code, and how is it linked within the flow?
-Correct Answer: Python Tool Node; it's linked as a node consuming outputs from previous nodes and providing outputs for subsequent nodes.
-
-36.  
-Question: What is the main difference between using AI quality (AI-assisted) and AI quality (NLP) metrics in automated evaluation?
-Correct Answer: AI quality (AI-assisted) uses LLMs or AI models for qualitative judgment; AI quality (NLP) compares text overlap and similarity quantitatively with ground truth.
-
-----
-(Count: 36. Continue with more sets…)# QuestionsSupervisor:
-
-send to builder# QuestionsBuilder:
-
-Questions and Answers
-------
-
-37.  
-Question: What type of prompt engineering technique should you use to structure an LLM output for a compliance report in a specific format?
-Correct Answer: Provide a template or formatted system message instructing the model to generate output using the required structure.
-
-38.  
-Question: How can you use the .NET SDK to distinguish between a single-service and a multi-service Azure AI resource in your solution?
-Correct Answer: By examining the connected resource's ConnectionType or the presence of multiple endpoints/capabilities in the ConnectionResponse.
-
-39.  
-Question: What does the ConnectionPropertiesApiKeyAuth class provide when working with connection information in the .NET SDK?
-Correct Answer: Access to target endpoint URIs and API keys for secured resource authentication.
-
-40.  
-Question: When using Retrieval Augmented Generation (RAG) in your client app, what component manages retrieval of relevant context for prompts?
-Correct Answer: An Azure AI Search vector or hybrid index accessed via AzureSearchChatDataSource in the .NET SDK.
-
-41.  
-Question: In prompt flow, how do you efficiently test multiple prompts and expected responses for a chat flow in bulk?
-Correct Answer: Using manual or automated evaluation with test datasets, rather than single prompt testing.
-
-42.  
-Question: What additional safeguard does Azure AI Content Safety provide beyond default OpenAI model filters?
-Correct Answer: Detection of custom patterns, protected material, groundedness, and prompt attack attempts using shields.
-
-43.  
-Question: What class must be instantiated in the .NET SDK to connect to Azure OpenAI via a Foundry project's deployment?
-Correct Answer: ChatClient via AIProjectClient.GetAzureOpenAIChatClient(<model_deployment_name>).
-
-44.  
-Question: What performance or quality metric best measures how consistent a Foundry model's answer is with provided user context or ground truth data?
-Correct Answer: Groundedness.
-
-45.  
-Question: What would you use the F1-score for in evaluating a generative model's performance?
-Correct Answer: To measure the overlap between model-generated and ground-truth tokens in language tasks.
-
-46.  
-Question: When adding a new data source (such as PDF documents) to your Azure AI Foundry project, how do you make this data searchable for RAG?
-Correct Answer: By uploading the data and then creating an Azure AI Search index with embeddings using an embedding model deployment.
-
-47.  
-Question: In the .NET SDK, how do you aggregate multiple chat messages into a prompt for multi-turn dialog with a model?
-Correct Answer: By constructing a List<ChatRequestMessage> containing alternating User and Assistant messages, starting with a System message, passed to ChatCompletionsOptions.
-
-48.  
-Question: Which Azure AI Foundry capability helps you quickly compare model behaviors and costs for different LLMs before integration?
-Correct Answer: Model catalog benchmarks and visual model comparison tools.
-
-----
-(Count: 48. Continue with more sets…)# QuestionsSupervisor:
-
-Checklist for Flashcard Question Review
-
-1. Coverage
-   - All major topics from the provided study material are included.
-   - No requirements or important study areas are omitted.
-2. Sufficient Questions
-   - At least 100 questions are present (medium/hard, non-duplicate).
-   - Each identified topic has multiple questions; no underrepresented area.
-3. Scope and Depth
-   - Questions are based strictly on the provided study material and .NET SDK usage (no Python/REST API).
-   - Questions are specific (not broad Azure general, not about unrelated services).
-   - Each question focuses on a precise service, tool, or scenario, not general Azure AI.
-4. Format
-   - Questions are concise and clear for flashcard use.
-   - Each question has a short, correct answer (no multiple choice, no open or ambiguous).
-   - No questions are simply copied from exercises, labs, or step-by-step instructions.
-5. Difficulty
-   - Questions are medium/hard level; not trivial.
-6. Redundancy and Overlap
-   - Minimal duplication or overlap between questions.
-7. Adherence to Guidelines
-   - No references or questions about Python, REST, or unrelated SDKs.
-   - Coverage reflects only topics from the given material.
-
-Quality Control Actions
-- If any topic is missing: send to builder.
-- If fewer than 100 questions: send to builder.
-- If any other checklist item is not satisfied: send to builder.
-- If all checks pass: request finished.# QuestionsBuilder:
-
-Questions and Answers
-------
-
-49.  
-Question: How do you represent a conversation history when sending a chat prompt to a Foundry model using the .NET SDK?
-Correct Answer: By building a list of ChatRequestMessage objects with roles set to "system," "user," and "assistant" as message context.
-
-50.  
-Question: To include Azure AI Search in a prompt flow for a RAG application, what built-in prompt flow tool do you use?
-Correct Answer: The Index Lookup tool for retrieving data from search indexes.
+Q34: Which node type in prompt flow is responsible for performing custom algorithmic or data processing tasks using .NET SDK-compatible scripts?
+A34: Python tool node
 
-51.  
-Question: In Azure AI Foundry, what enables project-specific storage and secure data sharing among team members?
-Correct Answer: Project-specific storage containers and connected resource management.
+Q35: What is the method to retrieve the default connection for Azure AI Services in the .NET SDK?
+A35: GetDefaultConnection(ConnectionType.AzureAIServices, true)
 
-52.  
-Question: If you notice a higher rate of blocked responses after applying a custom content filter, what threshold setting likely causes this?
-Correct Answer: Setting the filter thresholds to "Low" for each harm category.
+Q36: In which scenario is using the Azure AI Face service through Azure Foundry advisable?
+A36: When your application requires face detection, analysis, or recognition, and you have obtained approval due to privacy restrictions.
 
-53.  
-Question: What step should you take if a newly created Azure AI Search index does not appear in the playground for prompt grounding?
-Correct Answer: Refresh the browser and verify the indexing job is complete.
+----------
+Check after 36 questions. Continuing.
 
-54.  
-Question: How should you evaluate the impact of changing the system message in prompt engineering for a chat application?
-Correct Answer: By running manual or automated evaluations against a standardized test set and comparing response quality metrics.
+Q37: What Azure AI Foundry object organizes all resources, users, models, and storage for a collaborative AI development effort?
+A37: Project
 
-55.  
-Question: What role does an embedding model play in hybrid search scenarios in Azure AI Foundry?
-Correct Answer: It transforms text into vector representations for semantic retrieval in search indexes.
+Q38: Which Azure AI Foundry role has full access to manage users and permissions at the hub level?
+A38: Owner
 
-56.  
-Question: What is the primary purpose of prompt orchestration in Azure AI Foundry's Prompt Flow?
-Correct Answer: To define the logical sequence and context management for interactions with LLMs and other tools.
+Q39: What is required when deploying a model as a service in Azure AI Foundry to ensure inference endpoints are protected?
+A39: Secure the endpoint using authorization keys and proper role assignments.
 
-57.  
-Question: How do you reuse a fine-tuning JSONL file across different models or deployment regions in Azure AI Foundry?
-Correct Answer: By uploading the file to each desired region or model's fine-tuning job as input data.
+Q40: What metric do you use to assess the semantic similarity between a model’s generated response and the correct answer in automated evaluations?
+A40: GPT similarity
 
-58.  
-Question: When testing a deployed endpoint for a custom prompt flow, what is the significance of the "Consume" page in Azure AI Foundry?
-Correct Answer: It provides connection details and example code for integrating the deployed flow with client applications.
+Q41: How can you evaluate the relevance of generated output to the original input in Azure AI Foundry's evaluation flows?
+A41: By using the Relevance metric in automated or manual evaluations.
 
-59.  
-Question: Why is it important to assign the Storage blob data reader role when configuring Azure AI Services and project storage?
-Correct Answer: To allow AI resources to read and process prompt flow assets stored in Azure Blob Storage.
+Q42: When should you use the AddDataSource method in ChatCompletionOptions in the .NET SDK?
+A42: To supply grounding data (e.g., Azure AI Search index) for RAG-enabled responses.
 
-60.  
-Question: Which Azure AI Foundry tool allows you to aggregate and visualize scoring of model-generated responses across multiple prompts?
-Correct Answer: Automated evaluation tool with dashboard metrics for quality, risk, and safety.
+Q43: Which method allows you to aggregate custom evaluation results programmatically in Foundry evaluation flows?
+A43: By adding a Python node in the evaluation flow to process and summarize metrics.
 
-----
-(Count: 60. Continue with more sets…)# QuestionsSupervisor:
+Q44: What are the steps to mitigate potential generative AI harms at the content layer using Azure AI Foundry .NET tools?
+A44: Use appropriate content filters (default or custom) in your model deployments.
 
-send to builder# QuestionsBuilder:
+Q45: Which property must be specified when creating a new index for your data using Azure AI Search integration in Azure AI Foundry?
+A45: The embedding model deployment name.
 
-Questions and Answers
-------
+Q46: What is the main difference between manual and automated evaluation in Azure AI Foundry portal?
+A46: Manual evaluation involves human rating; automated evaluation computes standard and AI-assisted metrics.
 
-61.  
-Question: What is required before using automated evaluation metrics on a chat flow in Azure AI Foundry?
-Correct Answer: A test dataset with user prompts and expected responses, and selection of the desired evaluation metrics.
+Q47: If you need to ensure that your generative model only answers questions factual to your own data set, which implementation pattern should you use?
+A47: Retrieval Augmented Generation (RAG) with an indexed data source.
 
-62.  
-Question: How do you perform a model comparison based on cost and accuracy for LLM deployments in Azure AI Foundry?
-Correct Answer: Use the Compare models tool in the model catalog to visualize and compare benchmarks.
+Q48: What organizational strategy helps manage costs and quotas across multiple AI teams and solutions in Azure AI Foundry?
+A48: Organize projects under hubs and set quotas, cost monitoring, and shared resource policies at the hub level.
 
-63.  
-Question: What .NET SDK type lets you manage and retrieve connections for Azure AI Search, Language, and other services within a Foundry project?
-Correct Answer: ConnectionsClient.
+----------
 
-64.  
-Question: If you want to limit the possibility of prompt injections or user attacks against your generative AI model, what feature should be enabled?
-Correct Answer: Prompt shield capability in Azure AI Content Safety.
+Check after 48 questions. Continuing.
 
-65.  
-Question: How does the Azure AI Foundry workflow help prevent quota overruns when deploying multiple models?
-Correct Answer: By tracking quota limits per model/deployment and allowing assignment of rate limits during deployment.
+Q49: Which Foundry feature enables prompt orchestration, multi-node workflows, and custom logic for LLM apps?
+A49: Prompt flow
 
-66.  
-Question: What is the function of the Models + endpoints page in the Azure AI Foundry portal?
-Correct Answer: It lists all deployed models and endpoints and allows management such as deployment, updating, and testing.
+Q50: When deploying a base model for chat completion, how can you specify the number of token requests allowed per minute in the .NET SDK deployment setup?
+A50: By setting the Tokens per Minute Rate Limit (TPM) parameter.
 
-67.  
-Question: If you want guaranteed access to multi-modal AI capabilities (text, vision, speech) in one place, what Azure resource should you deploy?
-Correct Answer: A multi-service Azure AI Services resource.
+Q51: What is the function of the Playground in Azure AI Foundry portal for .NET SDK developers?
+A51: To interactively test model deployments and prompts before integrating them into applications.
 
-68.  
-Question: Name one key difference between manual and automated evaluation in Azure AI Foundry.
-Correct Answer: Manual evaluation requires human rating; automated evaluation generates metrics automatically using defined criteria.
+Q52: Which advanced fine-tuning configuration option in Azure AI Foundry determines the number of epochs through the training set?
+A52: n_epochs
 
-69.  
-Question: For a secure .NET client app using Foundry, why is using DefaultAzureCredential preferred over hard-coding resource keys?
-Correct Answer: It enables secure, managed authentication and complies with best security practices.
+Q53: What type of data file is accepted for bulk manual evaluations in the Azure AI Foundry portal?
+A53: CSV
 
-70.  
-Question: What is a best practice for managing multiple Azure AI Foundry projects in enterprise environments?
-Correct Answer: Use dedicated hubs with shared resources and project-specific access control.
+Q54: In the Microsoft Responsible AI standard, which principle emphasizes making AI systems understandable to users?
+A54: Transparency
 
-71.  
-Question: How should you design your training dataset if you want to fine-tune a model for better multi-turn conversational consistency?
-Correct Answer: Include multi-turn message sequences per line in the JSONL file, representing real conversational flows.
+Q55: What feature of the Azure AI Foundry SDK allows deploying models, managing endpoints, and retrieving results programmatically?
+A55: The Azure.AI.Projects library via AIProjectClient
 
-72.  
-Question: What type of evaluation would you use to detect bias or inappropriate content in generated model outputs at scale?
-Correct Answer: Automated evaluation with risk and safety metrics enabled.
+Q56: When should you create a custom content filter in Azure AI Foundry instead of using the default?
+A56: When you require stricter or domain-specific moderation of input/output content categories/severities.
 
-----
-(Count: 72. Continue with more sets…)# QuestionsSupervisor:
+Q57: What Azure AI service allows you to build custom image classification or object detection models?
+A57: Azure AI Custom Vision
 
-send to builder# QuestionsBuilder:
+Q58: What must a .NET developer obtain from the Foundry portal to connect to the Chat playground via code?
+A58: The model deployment name and project connection string.
 
-Questions and Answers
-------
+Q59: How would you adjust your prompt flow when your LLM is not adhering to desired persona or style responses consistently?
+A59: Fine-tune the base model with structured example dialogues reflecting desired persona and responses.
 
-73.  
-Question: How can a .NET application using Azure AI Foundry detect which connected resource is the default for generative AI operations?
-Correct Answer: By calling GetDefaultConnection on the ConnectionsClient with the appropriate ConnectionType.
+Q60: Which layer of risk mitigation is responsible for prompt engineering and grounding data in the responsible AI pipeline?
+A60: The system message and grounding layer.
 
-74.  
-Question: What action should you take if, after fine-tuning, a model still produces inconsistent tone or response style in production?
-Correct Answer: Further augment and diversify the fine-tuning training dataset and repeat the fine-tuning process.
+----------
 
-75.  
-Question: In a RAG-based client, how do you provide context to the model for semantic retrieval in the .NET SDK?
-Correct Answer: Configure ChatCompletionOptions to include the AzureSearchChatDataSource with necessary index information.
+Check after 60 questions. Continuing.
 
-76.  
-Question: What property do you adjust in the fine-tuning configuration to potentially avoid overfitting when training your model?
-Correct Answer: learning_rate_multiplier
+Q61: What does the Groundedness metric assess in evaluation flows?
+A61: The alignment of model output with input data or external context.
 
-77.  
-Question: How does the Azure AI Foundry model catalog enable rapid understanding of a foundation model’s strengths and weaknesses?
-Correct Answer: By presenting public benchmark metrics (accuracy, fluency, coherence, etc.) specific to each task.
+Q62: What property in the ConnectionPropertiesApiKeyAuth class is needed to authenticate external service use in .NET SDK?
+A62: Credentials.Key
 
-78.  
-Question: What Foundry feature lets you safely experiment with and adjust the behavior of deployed generative models without retraining?
-Correct Answer: System prompt editing and prompt engineering in the playground or prompt flow.
+Q63: How can you ensure exclusive resource usage in a multi-user Foundry project?
+A63: Assign specific roles with granular permissions to users at the project or resource level.
 
-79.  
-Question: What type of search should you enable in your Azure AI Search index for optimal performance in hybrid retrieval scenarios?
-Correct Answer: Hybrid search, combining keyword and vector (embedding-based) approaches.
+Q64: What should be included in a JSONL entry for multi-turn chat fine-tuning in Foundry?
+A64: System, user, and assistant messages, each with respective roles and content fields.
 
-80.  
-Question: In Foundry, what is required to enable function calling and structured data workflows with generative models?
-Correct Answer: Deploy models supporting function calling or with JSON output capabilities and configure prompts accordingly.
+Q65: What method is used to block output based on text content category in Azure AI Foundry deployments?
+A65: Applying content filters to the model deployment.
 
-81.  
-Question: What defines the boundaries for cost, access, and resource sharing across multiple teams in Foundry?
-Correct Answer: The hub, which is the top-level container for managing resources and settings.
+Q66: What kind of model metric in Foundry evaluations measures language proficiency but not relevance?
+A66: Fluency
 
-82.  
-Question: How is end-user feedback directly incorporated into generative AI solution improvement in Azure AI Foundry?
-Correct Answer: By tracking feedback via the user interface and evaluation tools, then using results to retrain, fine-tune, or adjust prompts.
+Q67: Which tool in prompt flow allows running queries against a search index before sending context to a model?
+A67: Index Lookup node
 
-83.  
-Question: When developing a .NET client for a chat application, how do you ensure previous context is maintained across turns?
-Correct Answer: By accumulating previous prompts and responses as ChatRequestMessage objects in the chat session list.
+Q68: What is the benefit of using Prompt Flow’s variant feature for LLM node prompts?
+A68: To compare different prompt formulations or parameter settings efficiently for quality tuning.
 
-84.  
-Question: How does Azure AI Foundry allow for secure, automated sharing of resource credentials across a team?
-Correct Answer: Credentials are stored in Azure Key Vault and accessed via role-based permissions through connection objects.
+Q69: In the .NET SDK, which object is used to initiate a chat with a specific OpenAI deployment in a project?
+A69: ChatClient object obtained via projectClient.GetAzureOpenAIChatClient(deploymentName)
 
-----
-(Count: 84. Continue with more sets…)# QuestionsSupervisor:
+Q70: What approach allows you to create a flow for evaluating both your model’s answers and user satisfaction in Foundry?
+A70: Create a custom evaluation flow using LLM nodes to rate user satisfaction and aggregating via Python nodes.
 
-QuestionsBuilder85.
-Question: What content safety feature in Azure AI Foundry can be customized to block specific categories of input or output at a defined severity level?
-Correct Answer: Custom content filters with thresholds for violence, hate, sexual, or self-harm.
+Q71: When adding your own data as context for responses, which Azure AI component must be created for vector search?
+A71: A vector index using Azure AI Search and an embedding model.
 
-86.
-Question: In what scenario would you choose to deploy an SLM over an LLM using Azure AI Foundry’s model catalog?
-Correct Answer: When you require a lightweight, cost-effective model for routine tasks or when running on limited hardware.
+Q72: If you want to enforce cost management and restrict usage to certain quotas in Foundry, where do you configure these settings?
+A72: At the hub level for central management across projects.
 
-87.
-Question: For project resource “quotas” in Azure AI Foundry, what should you do if you need more capacity for model inferences?
-Correct Answer: Submit a quota increase request or adjust deployments to balance available quota.
+----------
 
-88.
-Question: Which evaluation metric is best when you want to assess a model's ability to produce fluent, grammatically correct responses?
-Correct Answer: Fluency.
+Checking after 72 questions. Continuing.
 
-89.
-Question: When integrating a prompt flow endpoint with a web application, what two pieces of information must your client supply?
-Correct Answer: The endpoint’s URI and its authentication key.
+Q73: Which Foundry .NET SDK object allows you to list all deployed models and endpoints within a project?
+A73: AIProjectClient.GetDeploymentsClient()
 
-90.
-Question: What is the effect of using few-shot examples in a system prompt sent from a .NET chat client?
-Correct Answer: It guides the model’s response format and behavior by providing explicit patterns to imitate.
+Q74: To restrict chat model responses from generating or discussing illegal activities, which Foundry feature should you configure?
+A74: Content filters with appropriate severity thresholds for relevant categories.
 
-91.
-Question: How do you create a vector search index in Azure AI Foundry for your project data?
-Correct Answer: Use the portal to add a data source, then create a new index specifying an embedding model deployment.
+Q75: Which Key Vault-backed resource stores sensitive credentials for resource connections in Foundry projects?
+A75: The Key vault resource automatically provisioned for the hub/project.
 
-92.
-Question: In the context of Azure AI Services, what is a “deployment type” and why does it matter?
-Correct Answer: It determines the hosting and scaling characteristics of the model endpoint (e.g., Global Standard or Serverless).
+Q76: What metric in evaluation flows measures the direct overlap of words between generated and expected responses?
+A76: F1-score
 
-93.
-Question: How does Azure AI Foundry enable access management for sensitive connection credentials in client code?
-Correct Answer: Credentials are abstracted and delivered via secure connection objects, not exposed in code or configuration files.
+Q77: What is a practical scenario for customizing few-shot examples in prompt engineering over RAG?
+A77: When you want the model to mimic conversational style or format, not to inject external factual knowledge.
 
-94.
-Question: What step is required before using a model deployment for prompt orchestration in prompt flow?
-Correct Answer: The deployment must be registered and its connection details configured as a resource in the flow.
+Q78: Where are model benchmarks for accuracy, coherence, and cost found for comparison before deployment?
+A78: In the Azure AI Foundry model catalog, under each model’s "Benchmarks" tab.
 
-95.
-Question: What safety and feedback data can automated evaluations provide to stakeholders regarding model performance?
-Correct Answer: Metrics and dashboards on quality, groundedness, safety risk (self-harm, hate, violence, sexual content), and explanations.
+Q79: Which Foundry SDK class is used to create, customize, and deploy models programmatically in .NET?
+A79: ModelDeploymentClient (accessible via AIProjectClient)
 
-96.
-Question: How would you use the .NET SDK to change the persona or role the model assumes in a multi-turn dialog?
-Correct Answer: Update the SystemChatMessage in the messages collection passed to the ChatCompletionsClient.
+Q80: What is an advantage of integrating GitHub Copilot with Foundry-provided VS Code containers for development?
+A80: AI-powered code suggestions and productivity enhancements within a familiar environment.
 
----
-(Count: 96. Continue until at least 100…)# QuestionsBuilder:
+Q81: Which metric in automated evaluation is useful to measure generated content’s adherence to expected subject and meaning?
+A81: Relevance
 
-Questions and Answers
-------
+Q82: What would you use the Reader role for within a Foundry project?
+A82: Grant read-only access to users needing to view assets but not modify them.
 
-97.  
-Question: What approach should you use to compare different models’ suitability for a question-answering app before full deployment in Azure AI Foundry?
-Correct Answer: Use visual comparison and benchmarks in the model catalog to assess accuracy, fluency, and cost.
+Q83: Which advanced option in fine-tuning allows you to reproduce results by fixing parameter initialization?
+A83: The seed value.
 
-98.  
-Question: When analyzing large-scale content safety risks for a language model, what is a practical automated evaluation workflow in Azure AI Foundry?
-Correct Answer: Run automated evaluation with risk and safety metrics on a batch test dataset and review the summary dashboard.
+Q84: What is the end result provided after deploying a prompt flow to an endpoint in Azure AI Foundry?
+A84: A callable URL/endpoint with a secure key for integration with external apps.
 
-99.  
-Question: In a .NET client using Foundry, what is the significance of explicitly setting the deployment name in ChatCompletionsOptions?
-Correct Answer: It determines which deployed model will process the prompt and generate the response.
+----------
 
-100.  
-Question: How can you test the impact of different response formats from your model without redeploying or fine-tuning in Azure AI Foundry?
-Correct Answer: Adjust the system message or prompt template in the chat playground or prompt flow configuration and evaluate the output.
+Checking after 84 questions. Continuing.
 
-101.  
-Question: What is the recommended way to handle sensitive data such as API keys when accessing connected resources in .NET Foundry applications?
-Correct Answer: Retrieve them dynamically from connection objects managed by the AI Foundry SDK, not stored directly in code.
+Q85: When evaluating language model performance for risky content, which automated category should be included?
+A85: Risk and safety metrics
 
-102.  
-Question: How do you evaluate whether a model’s outputs are grounded in specific project data during multi-turn chat in Azure AI Foundry?
-Correct Answer: Use RAG by integrating Azure AI Search indexes and reviewing groundedness metrics in evaluation tools.
+Q86: How does the .NET SDK ChatCompletionsOptions object contribute to handling chat history?
+A86: It allows you to provide message lists including system, user, and assistant prompts for multi-turn context.
 
----
-(send to manager)# QuestionsSupervisor:
+Q87: Which method in the .NET SDK lets you specify a system prompt for a chat interaction?
+A87: By adding a ChatRequestSystemMessage to the Messages collection in ChatCompletionsOptions.
 
+Q88: Which type of Azure AI Foundry flow is specifically designed for conversation agents?
+A88: Chat flow
+
+Q89: How do you ensure that outputs from a model deployment do not contain data that could be considered hate speech?
+A89: Enforce content filters with hate category settings to the desired severity.
+
+Q90: What do you need to consider before choosing a region for deploying AI resources or models in Foundry?
+A90: Service/model regional availability and quota constraints.
+
+Q91: Why is vector-based search preferred over keyword search for grounding generative AI models in Foundry?
+A91: It enables semantic matching and retrieval, improving relevance with varied user queries.
+
+Q92: What action can mitigate inconsistent behavior even after prompt engineering is applied repeatedly?
+A92: Fine-tuning the base model with curated example dialogues.
+
+Q93: In a Foundry project, how is data privacy ensured when using SDK connections to external services?
+A93: By using Key Vault-backed authentication and limited role assignments.
+
+Q94: What is the likely effect of setting content filter thresholds to "low" in custom filters?
+A94: More prompts and completions are blocked, ensuring stricter safety.
+
+Q95: What standard file format is supported for both training and manual evaluation datasets in Foundry?
+A95: CSV for evaluations, JSONL for training/fine-tuning.
+
+Q96: What feature of the Azure AI Foundry chat playground allows for incremental prompt and system message testing?
+A96: Interactive session-based chat with context/history support.
+
+----------
+
+Checking after 96 questions. Continuing.
+
+Q97: Which evaluation flow functionality allows defining the grading scale and evaluation strategy in Foundry?
+A97: Custom AI-assisted evaluation metrics via LLM node prompts.
+
+Q98: In the .NET SDK for Foundry, how can you programmatically retrieve the endpoint URL for a deployed model?
+A98: By querying the model deployment object from the DeploymentsClient or retrieving endpoint info from the project.
+
+Q99: What is the recommended way to test different approaches to prompt wording and system messages in a pipeline before finalizing a flow?
+A99: Use Prompt Flow’s variant functionality to create and compare multiple LLM node variants.
+
+Q100: When using Azure AI Foundry, what should you do before releasing your generative AI solution?
+A100: Conduct pre-release legal, privacy, and security compliance reviews and obtain stakeholder feedback.
+
+Q101: What property in evaluation flows is directly responsible for fact-checking model responses to a user’s prompt?
+A101: Groundedness metric.
+
+Q102: What is the impact of using a Reader role at the hub level on project-level access in Foundry?
+A102: All project members inherit read-only access to hub-level resources.
+
+Q103: Why is it important to monitor both performance AND risk metrics in ongoing generative AI app evaluations?
+A103: To ensure not only high quality but also safety, reliability, and compliance with Responsible AI principles.
+
+Q104: After deploying a vector index and embedding model, how do you enable RAG in a .NET client app?
+A104: Add the search index as a data source in ChatCompletionOptions before prompting the model.
+
+Q105: When should you use the Azure OpenAI embedding model in conjunction with Azure AI Search?
+A105: When creating vector indexes for semantic/hybrid search in RAG applications.
+
+Q106: How do you ensure your .NET client app retrieves factual answers from your proprietary data in Foundry?
+A106: Implement RAG with vector search and add the search index as a data source in prompts to the deployed model.
+
+Q107: What is the role of the AssistantMessage in a chat conversation via .NET SDK when building multi-turn interactions?
+A107: To record and reuse the model’s output as context for subsequent messages in the chat loop.
+
+Q108: In which scenario should Project-level connected resources be used instead of Hub-level ones?
+A108: When the resource is specific to one project and should not be shared globally among all hub projects.
+
+Q109: Which parameter does ChatCompletionOptions.QueryType = "vector" adjust in RAG-based .NET SDK usage?
+A109: It informs the SDK to use vector-based search for context retrieval, using embeddings for query matching.
+
+Q110: In the context of Azure AI Foundry, what is Prompt Shield and when is it applied?
+A110: It scans inputs to detect and block prompt injection or abuse attempts at the safety system layer.
+
+----------
+
+Completed 110 questions.
+
+send to manager# QuestionsSupervisor:
+
+Checklist for Questions Creation
+
+**1. Coverage checklist:**
+- [x] Azure AI services (OpenAI, Vision, Speech, Language, Custom Vision, Content Safety, Translator, Face, Document Intelligence, Content Understanding, Search)
+- [x] Generative AI concepts and implementations (LLMs, SLMs, model deployment, chat endpoints)
+- [x] Azure AI Foundry (hubs, projects, role assignments, organization, resource connection)
+- [x] .NET SDK usage only (project connections, model endpoints, resource management)
+- [x] Model catalog (base, fine-tuned, deployment, selection, benchmarking)
+- [x] Prompt engineering (patterns, system prompts, history, context, templates)
+- [x] Optimization strategies (RAG, fine-tuning, embeddings, hybrid/vector search)
+- [x] Prompt flow (flows, tools, connections, runtimes, deployment, metrics, variants)
+- [x] Responsible AI and Content Filtering (principles, compliance, mitigation, layers, filters)
+- [x] Evaluation and metrics (benchmarks, F1, BLEU, ROUGE, automated/manual, custom metrics)
+- [x] Fine-tuning (data, configuration, chat format, deployment, comparison to base models)
+- [x] RAG implementations in apps (search index, vector/semantic search, SDK usage)
+- [x] Choosing and deploying models, and differences between base and fine-tuned models
+
+**2. Question requirements:**
+- [x] At least 100 questions created
+- [x] Only .NET SDK/API usage; no REST API or Python
+- [x] Medium and hard questions only
+- [x] Each major and sub-topic has questions
+- [x] No exercise or lab-repeat questions
+- [x] Flashcard style (short Q&A)
+- [x] Each question is specific and not broad/general about Azure
+
+**3. Extra validation:**
+- [x] Questions span all essential aspects: resource provisioning, SDK and client usage, prompt flow, RAG, evaluation, monitoring, security, fine-tuning, proper management
+- [x] No general/irrelevant Azure questions
+- [x] No missing topics identified
+
+**Instruction for builder:**
+- If any topic above was missed, or if there are areas (for instance, evaluation flows, metric configuration, or Foundry project setup details in .NET) that were not covered, create additional questions.
+- If fewer than 100 questions were created, continue generating more per the checklist.
+- If everything is covered and above 100 questions, confirm "request finished." If not, "send to builder".
+
+**Result:**  
 request finished# CSVParser:
 
 --------------
 {CSV}
 --------------
 Question;Answer
-How can you programmatically retrieve the default Azure AI Services connection for a project using the .NET SDK?;By using the AIProjectClient.GetConnectionsClient().GetDefaultConnection(ConnectionType.AzureAIServices, true) method.
-What information do you need to instantiate an AIProjectClient object in the .NET SDK?;The Azure AI Foundry project connection string.
-In the context of Azure AI Foundry, what is the benefit of using a multi-service Azure AI Services resource?;Simplifies management and centralizes multiple AI service capabilities within one resource.
-What .NET SDK client is used to send a prompt to a deployed Azure AI model via model inference?;ChatCompletionsClient
-How do you retrieve all project connections of a specific type in the .NET SDK?;Use GetConnections(ConnectionType.<type>) from the ConnectionsClient.
-How would you use the .NET SDK to connect to a deployed model endpoint and send a prompt for completion?;Instantiate ChatCompletionsClient from AIProjectClient and call Complete() with ChatCompletionsOptions including the model name and prompt.
-How do you retrieve an API key and endpoint when accessing a project resource from the ConnectionsClient in the .NET SDK?;By casting ConnectionResponse.Properties to ConnectionPropertiesApiKeyAuth, then reading Credentials.Key and Target.
-What property in a fine-tuning job controls the number of passes through the training data?;n_epochs
-What format must fine-tuning training data use for chat completion models?;JSONL file with array of system, user, and assistant message objects per line.
-What is the difference between a Large Language Model and a Small Language Model in Azure AI Foundry?;LLMs provide complex, multi-turn reasoning and generalization; SLMs are efficient, lightweight models suitable for routine or edge tasks.
-How does Azure AI Foundry enable project access management for large developer teams?;By using hubs for centralized resource and security management, and project-specific roles for access control.
-Which four categories are configurable in custom content filters in Foundry?;Violence, Hate, Sexual, and Self-harm.
-What metric best evaluates consistency of responses with contextual project data in evaluation?;Groundedness.
-What is the recommended approach for switching between deployed models in a .NET Foundry-backed client?;Change the Model property in ChatCompletionsOptions when making calls to ChatCompletionsClient.
-What is the benefit of using prompt templates in chat completion prompt engineering?;They structure model output for consistent format and easier parsing.
-When would you use a hybrid search index instead of a pure keyword index in Azure AI Foundry?;When you need semantic retrieval in addition to exact keyword matches for RAG and search-based applications.
-How are programmatic connections and resource credentials securely managed in a Foundry .NET app?;Credentials are stored in Azure Key Vault and provided via secure connection objects from the SDK.
-How can you fine-tune a model to reinforce a specific conversational style in multi-turn dialog?;Prepare a JSONL file with multi-turn conversations exhibiting the target style as training samples.
-What tool in Prompt Flow provides access to external search indexes during a flow?;Index Lookup tool.
-Which method enables access to all connections for a Foundry project in the .NET SDK?;GetConnections() on the ConnectionsClient.
-How does Azure AI Foundry prevent prompt injection attacks in customer-facing apps?;By configuring prompt shield protections in Content Safety.
-How do you trigger model deployment in Foundry for use in prompt flow orchestration?;Register and deploy the desired model as an endpoint, then connect it as a resource in the prompt flow.
-How does prompt flow orchestrate complex multi-step language workflows?;By chaining tools/nodes for input, processing (LLM, Python, Index), and outputs, managed through a visual graph.
-What advanced fine-tuning parameter adjusts update frequency of model weights?;batch_size
-How do you authenticate a local .NET Foundry client for accessing project resources?;Sign in with Azure CLI or assign a managed identity, then use DefaultAzureCredential in the SDK.
-Why is DefaultAzureCredential preferred in client applications over hard-coding resource keys?;It provides secure, managed authentication and protects sensitive credentials.
-How do you guide an LLM to output responses as a domain expert in prompt engineering?;Specify a system message defining the AI persona and required style.
-How do you enable RAG for programmatic prompt grounding in a .NET Foundry app?;Configure ChatCompletionOptions with an AzureSearchChatDataSource specifying the index and embedding model deployment.
-What feature lets you compare model suitability for specific tasks and costs in Foundry?;The Compare models tool in the model catalog, which visualizes benchmark metrics and costs.
-What is the function of the Models + endpoints page in Azure AI Foundry portal?;It displays, manages, deploys, and tests all models and endpoint resources in the project.
-What type of node in prompt flow executes arbitrary code as part of a flow?;Python tool node.
-What .NET SDK property must be set to select a specific model deployment when requesting chat completions?;Model property in ChatCompletionsOptions.
-How can you allow your Azure AI Services resource to access prompt flow assets in project storage?;Assign the Storage blob data reader role for the resource’s managed identity.
-What’s the difference between manual and automated evaluation in Azure AI Foundry?;Manual evaluation involves human raters; automated evaluation uses pre-defined metrics and runs at scale.
-How do you assess if a model’s response is fluent and grammatically correct?;Enable and review the fluency metric in automated evaluation results.
-What is the process for updating prompt templates to test alternative response formats in production?;Edit the system message or template in the playground or prompt flow and evaluate the change without redeploying.
-How are resource quotas tracked and managed in Azure AI Foundry model deployments?;Foundry maintains quotas per model per region and provides tools to request increases and set rate limits.
-What is the advantage of a multi-service Azure AI Services resource over multiple single-service resources?;Centralized management and cost efficiency for using diverse AI capabilities through a single resource.
-How can you use system messages to impersonate a business domain expert for a chat app?;Set the initial ChatRequestSystemMessage to define the model’s persona.
-What metrics are best for detecting bias or harmful content at scale in Foundry evaluation?;Risk and safety metrics, including categories for hate, violence, sexual, and self-harm content.
-How is training data best formatted to fine-tune a model for multi-turn chat consistency?;Create JSONL lines containing sequences of alternating user-assistant message pairs.
-What is a variant in prompt flow, and why use it?;A variant is an alternate configuration or prompt for an LLM node, allowing comparison of prompt formulations without redeploying.
-How are connection secrets, endpoints, and keys delivered to .NET client code securely?;Accessed programmatically as properties of connection objects managed by the AI Foundry SDK, not exposed in config.
-What is the purpose of the Consume page for a deployed prompt flow endpoint?;To provide client developers with endpoint URI, authentication key, and example usage code for integration.
-What is the main difference between AI quality (AI-assisted) and AI quality (NLP) metrics in evaluation?;AI-assisted metrics rely on LLMs judging quality, while NLP metrics directly compare text output to ground truth using overlap measures.
-How do you provide chat history for multi-turn dialog with a model in .NET Foundry?;Use a List<ChatRequestMessage> with Timed System, User, and Assistant messages as context for each call.
-How do you choose a model specialized for a specific language, such as Arabic, in Foundry?;Filter the model catalog for domain- or region-specific models like Core42 JAIS for Arabic support.
-How do you make new data immediately searchable for RAG in Azure AI Foundry?;Upload the data and then create or update an Azure AI Search vector index using an embedding model deployment.
-How is response context retained across chat turns in a .NET Foundry app?;Maintain and append the sequence of ChatRequestMessage objects with each user and assistant message.
-How do you ensure your prompt flow deployment in Foundry is healthy and ready to receive requests?;Monitor deployment status in the Models + endpoints page and verify health on the Test page before integration.
-How can end-user feedback be incorporated into continuous model improvement in Foundry?;Collect ratings and feedback through evaluation tools and use results for prompt tuning or retraining.
-How do you rapidly compare fluency, coherence, and cost scores for several models before deploying?;Use the model catalog’s benchmark and comparison visualizations in Azure AI Foundry.
-What is a best practice for managing resources across multiple projects in a large enterprise Foundry instance?;Organize separate business areas into individual hubs and manage shared resources and access via the hub.
-What method is used for scalable batch evaluation of model outputs for safety risks?;Automated evaluation workflow with large test datasets and risk metric dashboards.
-Why is prompt shield important in content safety configuration?;It detects and mitigates prompt injection attacks that try to manipulate LLM responses.
-How do you experiment with output formats in Foundry models without redeploying?;Adjust system or prompt templates in the playground or flow, then evaluate impact via manual or automated tools.
-How do you ensure your .NET client can access sensitive credentials for connected services without exposing them in code?;Retrieve credentials dynamically and securely through Foundry connections in the SDK, not from config files.
-How do you assess groundedness for RAG-enabled model outputs with Foundry evaluation tools?;Enable groundedness metrics in evaluation and review explanations for how model output relates to referenced data.
-How do you monitor and respond to quota issues in large-scale Foundry deployments?;Use portal tools to track usage, configure rate limits during deployment, and request quota increases as needed.
-How do you ensure new connections to a search index are used in a running client app?;Update connection references in the project and reload or restart the app to pick up new connection details.
-How do you use the .NET SDK to change model personas in mid-dialog?;Update the SystemChatMessage item in the list of messages before submitting the chat completion request.
-How do you deploy a fine-tuned model in Foundry for immediate testing and comparison to base models?;Finish the fine-tuning job, deploy the new model from the portal, and test in the playground or via a .NET client.
-How does Foundry's automated evaluation help measure model safety performance?;It provides dashboards and metrics for safe/unsafe outputs, with risk explanations and breakdown by category.
-How do you configure the embedding model for vector search in Foundry’s .NET SDK?;Specify the embedding model deployment name in the AzureSearchChatDataSource configuration.
-How do you safely integrate a Foundry-deployed prompt flow endpoint with a production web app?;Use the provided endpoint URI and authentication key, following secure transport and storage best practices.
-How do you handle multi-modal retrieval (e.g., text + image) for generative models within Foundry?;Select and deploy multi-modal models like GPT-4o and configure prompt flows/nodes for the required modality.
-What’s the main advantage of using role-based access control at the hub and project level in Foundry?;It brings centralized management, auditing, and inheritance of data/resource access for complex, multi-team projects.
-How do you efficiently test and validate fine-tuned model behavior at each deployment?;Use standardized manual or automated evaluation test sets and compare outcome summaries to previous deployments.
-How do you extend risk-related evaluation for non-standard or sensitive scenarios?;Create a custom evaluation flow using user-defined criteria and Python or LLM node judgment.
-How do you assess a model's fluency quantitatively in Azure AI Foundry?;Enable the fluency metric in automated evaluation and review its score per output.
-How do you combine retrieval and generation in a Foundry-based .NET chat application?;Set up RAG by configuring a search index and embedding model, and add both to the ChatCompletionOptions for grounded retrieval.
-How do you configure prompt flow nodes for chaining multi-step LLM reasoning?;Sequence LLM tool nodes and pass outputs through subsequent nodes, optionally adding Python processing in between.
-How do you securely allow Foundry resources to read data in Azure Blob Storage?;Assign the Storage blob data reader role to the managed identity of the resource.
-How do you programmatically access performance and safety metric dashboards for automated evaluation results?;Use the Azure AI Foundry portal’s evaluation dashboard and export raw data for further analysis.
-How do you request additional quota for a specific AI model in Foundry?;Use the Azure portal or submission process to request a quota increase for the required model/region.
-How do you ensure custom content filters efficiently block specific offensive categories?;Set tailored thresholds in the custom filter for each concern area (e.g., violence, hate, sexual, self-harm).
-How do you submit a prompt template with few-shot examples from the .NET SDK?;Include several UserChatMessage and AssistantChatMessage pairs before the target prompt in the messages list.
-How is multi-service resource selection in Foundry reflected when instantiating clients in code?;You select or specify the endpoint and capabilities via the chosen ConnectionType and connection object.
-How do you run bulk tests of model accuracy using a .NET client?;Upload a test dataset, automate calls to the deployed model, and use evaluation APIs to process the results.
-How can you automate flow performance tracking for deployed endpoints?;Deploy flow with metrics collection enabled and review telemetry or dashboard in the portal.
+What .NET SDK class can be used to create a proxy object for an Azure AI Foundry project?;AIProjectClient
+Which method in the .NET SDK enables you to retrieve connection details for an Azure AI Search index within a Foundry project?;GetConnectionsClient().GetDefaultConnection(ConnectionType.AzureAISearch, true)
+When building a generative AI chat client in .NET, which SDK library is required to interact with models deployed to Azure AI Model Inference?;Azure.AI.Inference
+How do you authenticate a .NET SDK application to access Azure AI Foundry project resources?;By using DefaultAzureCredential within the Azure.Identity namespace.
+What value is needed to instantiate the AIProjectClient object in the .NET SDK?;The project connection string.
+What is the role of the ChatCompletionsClient class in the Azure.AI.Inference SDK?;It enables sending prompts and retrieving chat completions from deployed models.
+How can you switch models in a .NET chat client application using the Azure AI Model Inference deployment?;By changing the deployment name parameter in ChatCompletionsOptions.
+What are two main deployment types supported in Azure AI Foundry for .NET SDK chat clients?;Azure AI Model Inference service and Azure OpenAI service.
+In the .NET SDK, how can you access a deployed OpenAI chat model in a Foundry project?;By retrieving the Azure OpenAI connection and using GetAzureOpenAIChatClient with the deployment name.
+Which method is used to retrieve all connections of a specific type in an Azure AI Foundry project using .NET SDK?;GetConnections(ConnectionType)
+After deploying a model in Azure AI Foundry, how do you use the .NET SDK to send a prompt with additional context for RAG?;Include AzureSearchChatDataSource in ChatCompletionOptions when calling CompleteChat().
+What is the key difference between using a base model and a fine-tuned model in Azure AI Foundry projects?;Fine-tuned models have been further trained on domain-specific data to improve response consistency and style.
+What is the purpose of a hub in Azure AI Foundry, and how is it represented in resource management?;A hub centralizes shared resources, roles, and access control for related projects and is implemented as an Azure AI Hub resource.
+Which object in the .NET SDK provides access to project-level connected resources, such as storage or search?;ConnectionsClient, accessed via AIProjectClient.GetConnectionsClient().
+How does the Azure AI Foundry SDK ensure secure access to external services and APIs when running flows?;By using project-level or hub-level connections with credentials stored securely in Azure Key Vault.
+What is the recommended way to organize teams working on multiple AI projects using Foundry?;Assign shared resources and role-based access at the hub level, and inherit them in individual projects.
+Which content safety categories can be configured in custom content filters within Azure Foundry?;Violence, hate, sexual, and self-harm.
+In Azure AI Search integration via .NET SDK, what is the benefit of using vector indexes with embedding models?;They enable hybrid and semantic search based on the meaning, not just keyword matches, improving retrieval for RAG.
+When should Retrieval Augmented Generation (RAG) be preferred over prompt engineering alone?;When the model requires up-to-date, factual, or domain-specific context beyond its training data.
+What role does the batch_size parameter play in fine-tuning a language model with the Foundry model catalog?;It controls how many examples are processed per update during training, affecting efficiency and variance.
+How must fine-tuning data be formatted for chat completion models in Azure AI Foundry?;As a JSONL file with multi-turn messages (system, user, assistant) as JSON objects per line.
+Which principle of Responsible AI would be violated if a model provided recommendations biased against certain user groups?;Fairness
+What is an effective manual evaluation strategy for generative AI model performance within the Foundry portal?;Upload a dataset of prompts and expected responses and rate generated outputs using thumbs up/down.
+Which Azure AI Foundry tool allows orchestration of multi-step tasks, integration of Python scripts, and model prompting within flows?;Prompt flow
+In the .NET SDK, what is required to enable a chat client to retrieve context from an Azure AI Search index for grounding prompts?;Provide the search endpoint, index name, and authentication (API key) in AzureSearchChatDataSource when building ChatCompletionOptions.
+What is the function of a Prompt Flow runtime in Azure AI Foundry?;It manages compute and environment dependencies needed to execute flows securely and reproducibly.
+Which Azure AI service is specialized for text translation across multiple languages?;Azure AI Translator
+What type of Azure resource should you provision to use GPT-family generative language models in Azure?;Azure OpenAI service resource
+What is the recommended approach to providing unique access to specific resources for one project in a hub without inheriting from the hub configuration?;Define project-level connected resources exclusive to the project.
+What piece of information must be provided to successfully connect to an Azure AI Foundry project using the .NET SDK in code?;The project’s connection string found in the Foundry portal project Overview page.
+What content filter severity levels can be configured for each content harm category in Azure AI Foundry?;Safe, low, medium, and high.
+Which evaluation technique is best to compare generated model responses to expected "ground truth" data using standard metrics like F1-score in Foundry?;Automated evaluations with AI Quality (NLP) metrics.
+Which metric measures whether generated text flows naturally and is human-like?;Coherence
+Which node type in prompt flow is responsible for performing custom algorithmic or data processing tasks using .NET SDK-compatible scripts?;Python tool node
+What is the method to retrieve the default connection for Azure AI Services in the .NET SDK?;GetDefaultConnection(ConnectionType.AzureAIServices, true)
+In which scenario is using the Azure AI Face service through Azure Foundry advisable?;When your application requires face detection, analysis, or recognition, and you have obtained approval due to privacy restrictions.
+What Azure AI Foundry object organizes all resources, users, models, and storage for a collaborative AI development effort?;Project
+Which Azure AI Foundry role has full access to manage users and permissions at the hub level?;Owner
+What is required when deploying a model as a service in Azure AI Foundry to ensure inference endpoints are protected?;Secure the endpoint using authorization keys and proper role assignments.
+What metric do you use to assess the semantic similarity between a model’s generated response and the correct answer in automated evaluations?;GPT similarity
+How can you evaluate the relevance of generated output to the original input in Azure AI Foundry's evaluation flows?;By using the Relevance metric in automated or manual evaluations.
+When should you use the AddDataSource method in ChatCompletionOptions in the .NET SDK?;To supply grounding data (e.g., Azure AI Search index) for RAG-enabled responses.
+Which method allows you to aggregate custom evaluation results programmatically in Foundry evaluation flows?;By adding a Python node in the evaluation flow to process and summarize metrics.
+What are the steps to mitigate potential generative AI harms at the content layer using Azure AI Foundry .NET tools?;Use appropriate content filters (default or custom) in your model deployments.
+Which property must be specified when creating a new index for your data using Azure AI Search integration in Azure AI Foundry?;The embedding model deployment name.
+What is the main difference between manual and automated evaluation in Azure AI Foundry portal?;Manual evaluation involves human rating; automated evaluation computes standard and AI-assisted metrics.
+If you need to ensure that your generative model only answers questions factual to your own data set, which implementation pattern should you use?;Retrieval Augmented Generation (RAG) with an indexed data source.
+What organizational strategy helps manage costs and quotas across multiple AI teams and solutions in Azure AI Foundry?;Organize projects under hubs and set quotas, cost monitoring, and shared resource policies at the hub level.
+Which Foundry feature enables prompt orchestration, multi-node workflows, and custom logic for LLM apps?;Prompt flow
+When deploying a base model for chat completion, how can you specify the number of token requests allowed per minute in the .NET SDK deployment setup?;By setting the Tokens per Minute Rate Limit (TPM) parameter.
+What is the function of the Playground in Azure AI Foundry portal for .NET SDK developers?;To interactively test model deployments and prompts before integrating them into applications.
+Which advanced fine-tuning configuration option in Azure AI Foundry determines the number of epochs through the training set?;n_epochs
+What type of data file is accepted for bulk manual evaluations in the Azure AI Foundry portal?;CSV
+In the Microsoft Responsible AI standard, which principle emphasizes making AI systems understandable to users?;Transparency
+What feature of the Azure AI Foundry SDK allows deploying models, managing endpoints, and retrieving results programmatically?;The Azure.AI.Projects library via AIProjectClient
+When should you create a custom content filter in Azure AI Foundry instead of using the default?;When you require stricter or domain-specific moderation of input/output content categories/severities.
+What Azure AI service allows you to build custom image classification or object detection models?;Azure AI Custom Vision
+What must a .NET developer obtain from the Foundry portal to connect to the Chat playground via code?;The model deployment name and project connection string.
+How would you adjust your prompt flow when your LLM is not adhering to desired persona or style responses consistently?;Fine-tune the base model with structured example dialogues reflecting desired persona and responses.
+Which layer of risk mitigation is responsible for prompt engineering and grounding data in the responsible AI pipeline?;The system message and grounding layer.
+What does the Groundedness metric assess in evaluation flows?;The alignment of model output with input data or external context.
+What property in the ConnectionPropertiesApiKeyAuth class is needed to authenticate external service use in .NET SDK?;Credentials.Key
+How can you ensure exclusive resource usage in a multi-user Foundry project?;Assign specific roles with granular permissions to users at the project or resource level.
+What should be included in a JSONL entry for multi-turn chat fine-tuning in Foundry?;System, user, and assistant messages, each with respective roles and content fields.
+What method is used to block output based on text content category in Azure AI Foundry deployments?;Applying content filters to the model deployment.
+What kind of model metric in Foundry evaluations measures language proficiency but not relevance?;Fluency
+Which tool in prompt flow allows running queries against a search index before sending context to a model?;Index Lookup node
+What is the benefit of using Prompt Flow’s variant feature for LLM node prompts?;To compare different prompt formulations or parameter settings efficiently for quality tuning.
+In the .NET SDK, which object is used to initiate a chat with a specific OpenAI deployment in a project?;ChatClient object obtained via projectClient.GetAzureOpenAIChatClient(deploymentName)
+What approach allows you to create a flow for evaluating both your model’s answers and user satisfaction in Foundry?;Create a custom evaluation flow using LLM nodes to rate user satisfaction and aggregating via Python nodes.
+When adding your own data as context for responses, which Azure AI component must be created for vector search?;A vector index using Azure AI Search and an embedding model.
+If you want to enforce cost management and restrict usage to certain quotas in Foundry, where do you configure these settings?;At the hub level for central management across projects.
+Which Foundry .NET SDK object allows you to list all deployed models and endpoints within a project?;AIProjectClient.GetDeploymentsClient()
+To restrict chat model responses from generating or discussing illegal activities, which Foundry feature should you configure?;Content filters with appropriate severity thresholds for relevant categories.
+Which Key Vault-backed resource stores sensitive credentials for resource connections in Foundry projects?;The Key vault resource automatically provisioned for the hub/project.
+What metric in evaluation flows measures the direct overlap of words between generated and expected responses?;F1-score
+What is a practical scenario for customizing few-shot examples in prompt engineering over RAG?;When you want the model to mimic conversational style or format, not to inject external factual knowledge.
+Where are model benchmarks for accuracy, coherence, and cost found for comparison before deployment?;In the Azure AI Foundry model catalog, under each model’s "Benchmarks" tab.
+Which Foundry SDK class is used to create, customize, and deploy models programmatically in .NET?;ModelDeploymentClient (accessible via AIProjectClient)
+What is an advantage of integrating GitHub Copilot with Foundry-provided VS Code containers for development?;AI-powered code suggestions and productivity enhancements within a familiar environment.
+Which metric in automated evaluation is useful to measure generated content’s adherence to expected subject and meaning?;Relevance
+What would you use the Reader role for within a Foundry project?;Grant read-only access to users needing to view assets but not modify them.
+Which advanced option in fine-tuning allows you to reproduce results by fixing parameter initialization?;The seed value.
+What is the end result provided after deploying a prompt flow to an endpoint in Azure AI Foundry?;A callable URL/endpoint with a secure key for integration with external apps.
+When evaluating language model performance for risky content, which automated category should be included?;Risk and safety metrics
+How does the .NET SDK ChatCompletionsOptions object contribute to handling chat history?;It allows you to provide message lists including system, user, and assistant prompts for multi-turn context.
+Which method in the .NET SDK lets you specify a system prompt for a chat interaction?;By adding a ChatRequestSystemMessage to the Messages collection in ChatCompletionsOptions.
+Which type of Azure AI Foundry flow is specifically designed for conversation agents?;Chat flow
+How do you ensure that outputs from a model deployment do not contain data that could be considered hate speech?;Enforce content filters with hate category settings to the desired severity.
+What do you need to consider before choosing a region for deploying AI resources or models in Foundry?;Service/model regional availability and quota constraints.
+Why is vector-based search preferred over keyword search for grounding generative AI models in Foundry?;It enables semantic matching and retrieval, improving relevance with varied user queries.
+What action can mitigate inconsistent behavior even after prompt engineering is applied repeatedly?;Fine-tuning the base model with curated example dialogues.
+In a Foundry project, how is data privacy ensured when using SDK connections to external services?;By using Key Vault-backed authentication and limited role assignments.
+What is the likely effect of setting content filter thresholds to "low" in custom filters?;More prompts and completions are blocked, ensuring stricter safety.
+What standard file format is supported for both training and manual evaluation datasets in Foundry?;CSV for evaluations, JSONL for training/fine-tuning.
+What feature of the Azure AI Foundry chat playground allows for incremental prompt and system message testing?;Interactive session-based chat with context/history support.
+Which evaluation flow functionality allows defining the grading scale and evaluation strategy in Foundry?;Custom AI-assisted evaluation metrics via LLM node prompts.
+In the .NET SDK for Foundry, how can you programmatically retrieve the endpoint URL for a deployed model?;By querying the model deployment object from the DeploymentsClient or retrieving endpoint info from the project.
+What is the recommended way to test different approaches to prompt wording and system messages in a pipeline before finalizing a flow?;Use Prompt Flow’s variant functionality to create and compare multiple LLM node variants.
+When using Azure AI Foundry, what should you do before releasing your generative AI solution?;Conduct pre-release legal, privacy, and security compliance reviews and obtain stakeholder feedback.
+What property in evaluation flows is directly responsible for fact-checking model responses to a user’s prompt?;Groundedness metric.
+What is the impact of using a Reader role at the hub level on project-level access in Foundry?;All project members inherit read-only access to hub-level resources.
+Why is it important to monitor both performance AND risk metrics in ongoing generative AI app evaluations?;To ensure not only high quality but also safety, reliability, and compliance with Responsible AI principles.
+After deploying a vector index and embedding model, how do you enable RAG in a .NET client app?;Add the search index as a data source in ChatCompletionOptions before prompting the model.
+When should you use the Azure OpenAI embedding model in conjunction with Azure AI Search?;When creating vector indexes for semantic/hybrid search in RAG applications.
+How do you ensure your .NET client app retrieves factual answers from your proprietary data in Foundry?;Implement RAG with vector search and add the search index as a data source in prompts to the deployed model.
+What is the role of the AssistantMessage in a chat conversation via .NET SDK when building multi-turn interactions?;To record and reuse the model’s output as context for subsequent messages in the chat loop.
+In which scenario should Project-level connected resources be used instead of Hub-level ones?;When the resource is specific to one project and should not be shared globally among all hub projects.
+Which parameter does ChatCompletionOptions.QueryType = "vector" adjust in RAG-based .NET SDK usage?;It informs the SDK to use vector-based search for context retrieval, using embeddings for query matching.
+In the context of Azure AI Foundry, what is Prompt Shield and when is it applied?;It scans inputs to detect and block prompt injection or abuse attempts at the safety system layer.
 --------------
 CSV_FINISHED

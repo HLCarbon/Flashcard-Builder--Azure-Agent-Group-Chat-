@@ -13,11 +13,10 @@ internal class Program
 {
     private static async Task Main(string[] args)
     {
-        string environment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "Production";
-
         var configuration = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json")
-        .AddJsonFile($"appsettings.{environment}.json", true)
+        .AddJsonFile($"appsettings.Development.json", true)
         .Build();
 
         var endpoint = new Uri(configuration["Endpoint"]);
@@ -49,8 +48,6 @@ internal class Program
         string userMessage = HelperClass.GetUserInitialChatMessage("./UserMessage/MessageTemplate.txt", "./UserMessage/StudyMaterial.txt", "./UserMessage/reworked_exam_question.json");
         chat.AddChatMessage(new ChatMessageContent(AuthorRole.User, userMessage));
         Console.WriteLine(userMessage);
-
-
 
         var conversationHistory = new StringBuilder();
         var author = "assistant";
