@@ -45,7 +45,7 @@ internal class Program
             }
         };
 
-        string userMessage = HelperClass.GetUserInitialChatMessage("./UserMessage/MessageTemplate.txt", "./UserMessage/StudyMaterial.txt", "./UserMessage/reworked_exam_question.json");
+        string userMessage = HelperClass.GetUserInitialChatMessage("./UserMessage/MessageTemplate.txt", "./UserMessage/StudyMaterial.txt", "./UserMessage/ExampleQuestions.json");
         chat.AddChatMessage(new ChatMessageContent(AuthorRole.User, userMessage));
         Console.WriteLine(userMessage);
 
